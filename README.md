@@ -9,6 +9,9 @@
             margin: 0; 
             background: #29825d; 
             font-family: Arial, sans-serif; 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         #toolbar {
             background: #ffffff;
@@ -25,10 +28,18 @@
         #canvas { 
             background: white; 
             display: block; 
-            margin: 0 auto; 
+            margin: 0 auto 20px; 
             box-shadow: 0 6px 15px rgba(0,0,0,0.4); 
             cursor: crosshair; 
             border: 3px solid #ffffff;
+            flex: 1;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin: 20px 0 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         button { 
             padding: 8px 15px; 
@@ -43,12 +54,19 @@
         button:hover { 
             background: #1f6245; 
         }
-        h1 {
+        footer {
             text-align: center;
+            padding: 15px;
             color: white;
-            margin: 20px 0 10px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1em;
+            background: rgba(0,0,0,0.2);
+        }
+        footer a {
+            color: #ffdddd;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -61,6 +79,10 @@
         <button id="eraserBtn">Eraser</button>
     </div>
     <canvas id="canvas" width="1000" height="700"></canvas>
+
+    <footer>
+        Made with ❤️ by Armeen
+    </footer>
 
     <script>
         const canvas = document.getElementById('canvas');
@@ -144,7 +166,6 @@
         // Clear canvas
         clearBtn.addEventListener('click', () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // Refill with white background
             ctx.fillStyle = 'white';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
         });
